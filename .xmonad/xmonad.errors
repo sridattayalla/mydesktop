@@ -1,0 +1,14 @@
+
+xmonad.hs:75:15: warning: [-Wtabs]
+    Tab character found here, and in one further location.
+    Please use spaces instead.
+   |
+75 |     , ((modm,               xK_f     ), spawn "rofi -show window")
+   |               ^^
+
+xmonad.hs:193:12: warning: [-Wdeprecations]
+    In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+    |
+193 | myLayout = spacing 7 $ tiled ||| Mirror tiled ||| Full
+    |            ^^^^^^^
