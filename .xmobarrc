@@ -1,9 +1,9 @@
 Config { overrideRedirect = False
-       , font     = "xft:Mononoki Nerd Font"
+       , font     = "xft:JetBrains Mono"
        , bgColor  = "#0b6287"
        , alpha    = 225
        , fgColor  = "#f8f8f2"
-       , position = TopW L 100
+       , position = TopW C 100
        , commands = [ Run Weather "EGPF"
                         [ "--template", "<weather> <tempC>°C"
                         , "-L", "0"

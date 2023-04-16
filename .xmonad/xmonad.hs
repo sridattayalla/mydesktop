@@ -74,8 +74,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch open window search
     , ((modm, 		    xK_f     ), spawn "rofi -show window")
 
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    -- launch screenshot
+    , ((modm .|. shiftMask, xK_p     ), spawn "sh ~/lab/clip/clip.sh")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -262,8 +262,42 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+-- main = 
+--   xmonad . ewmh =<< statusBar "xmobar" xmoDef toggleStrutsKey defaults
+--   where
+--     toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
+--     toggleStrutsKey XConfig{ modMask = m } = (m, xK_b)
+
+--     xmoDef = def
+--       { ppSep             = yellow " • "
+--       , ppTitleSanitize   = xmobarStrip
+--       , ppTitle           = \_ -> ""
+--       , ppCurrent         = wrap (yellow "[") (yellow "]")
+--       , ppHidden          = white . wrap " " ""
+--       , ppHiddenNoWindows = lowWhite . wrap " " ""
+--       , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+--       --, ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+--       -- , ppExtras          = [logTitles formatFocused formatUnfocused]
+--       }
+--       where
+--         formatFocused   = wrap (white    "[") (white    "]") . yellow . ppWindow
+--         formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+
+--         -- | Windows should have *some* title, which should not not exceed a
+--         -- sane length.
+--         ppWindow :: String -> String
+--         ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
+
+--         blue, lowWhite, magenta, red, white, yellow :: String -> String
+--         magenta  = xmobarColor "#ff79c6" ""
+--         blue     = xmobarColor "#bd93f9" ""
+--         white    = xmobarColor "#f8f8f2" ""
+--         yellow   = xmobarColor "#fcba03" ""
+--         red      = xmobarColor "#ff5555" ""
+--         lowWhite = xmobarColor "#bbbbbb" ""
+
 main = 
-  xmonad . ewmh =<< statusBar "xmobar" xmoDef toggleStrutsKey defaults
+  xmonad . ewmh =<< statusBar "sh ../polybar/start.sh" xmoDef toggleStrutsKey defaults
   where
     toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
     toggleStrutsKey XConfig{ modMask = m } = (m, xK_b)
